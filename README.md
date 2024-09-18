@@ -38,3 +38,19 @@ Para facilitar la interacción con la API de App-Franchise, hemos creado una col
 Una vez que hayas importado la colección, podrás acceder a diferentes escenarios y casos de uso relacionados con la gestión de franquicias, sucursales y productos en App-Franchise. Asegúrate de haber ejecutado la aplicación localmente o mediante un contenedor de Docker antes de probar los endpoints.
 
 ¡Explora y prueba la colección para conocer más sobre la API de App-Franchise!
+
+### Ejecución en la nube
+
+Actualmente la aplicación se encuentra desplegada en la nube de AWS con una infraestructura sencilla. Cuenta con los siguientes recursos:
+- Pipeline de CI/CD implementado con CodePipeline, CodeBuild y CodeDeploy
+- Load Balancer para distribuir el tráfico entre las instancias
+- Recurso de ECS con Fargate para ejecutar la aplicación en contenedores, actualmente se tienen 2 instancias corriendo entre las que el balanceador de carga distribuye la carga
+- MongoDB Atlas para la base de datos
+- Parameter Store de AWS System Manager para el manejo de secretos de la aplicación
+
+Para hacer uso del aplicativo desplegado en la nube, en Postman, en la colección de Franquicia, en la carpeta de "Variables", se debe cambiar la variable "API_URL" por la dirección del Load Balancer de AWS:
+    
+```bash
+    alb-franchise-1917080522.us-east-1.elb.amazonaws.com/
+   ```
+![img_1.png](img_1.png)
