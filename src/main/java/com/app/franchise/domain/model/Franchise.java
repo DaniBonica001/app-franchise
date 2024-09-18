@@ -15,7 +15,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document(collection = "franchises")
 public class Franchise {
 
     private String franchiseId;

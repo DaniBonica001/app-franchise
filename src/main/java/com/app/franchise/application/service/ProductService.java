@@ -4,7 +4,6 @@ import com.app.franchise.application.ports.input.IProductServicePort;
 import com.app.franchise.application.ports.output.IProductPersistencePort;
 import com.app.franchise.domain.exception.ProductAlreadyExistsException;
 import com.app.franchise.domain.exception.ProductNotFoundException;
-import com.app.franchise.domain.exception.StoreNotFoundException;
 import com.app.franchise.domain.model.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

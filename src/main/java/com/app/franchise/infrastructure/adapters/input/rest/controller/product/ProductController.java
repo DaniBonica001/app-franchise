@@ -1,7 +1,6 @@
 package com.app.franchise.infrastructure.adapters.input.rest.controller.product;
 
 import com.app.franchise.application.ports.input.IProductServicePort;
-import com.app.franchise.domain.model.Product;
 import com.app.franchise.infrastructure.adapters.input.rest.dto.request.CreateProductDTO;
 import com.app.franchise.infrastructure.adapters.input.rest.dto.response.CreateProductResponseDTO;
 import com.app.franchise.infrastructure.adapters.input.rest.mapper.ProductRestMapper;
