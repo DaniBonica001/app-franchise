@@ -25,7 +25,7 @@ cd app-franchise
 
 Para facilitar la interacción con la API de App-Franchise, hemos creado una colección de Postman que incluye diversos escenarios y casos de uso. Puedes importar esta colección en tu cliente de Postman siguiendo estos pasos:
 
-1. Descarga el archivo JSON de la colección de Postman desde el siguiente enlace: [Colección de Postman JSON](https://drive.google.com/file/d/1Bs7s9OaXAoylf49W_67l1-b8o64p8Ml2/view?usp=sharing) 
+1. Descarga el archivo JSON de la colección de Postman desde el siguiente enlace: [Colección de Postman JSON](https://drive.google.com/file/d/1QZEWVc9EE0KxFJVWKpupY1RBZNbmoS-r/view?usp=sharing) 
 2. Abre Postman y haz clic en la pestaña "Import" en la parte superior izquierda.
 
 3. Selecciona el archivo "Franquicia.postman_collection.json" en la ubicación de descarga.
