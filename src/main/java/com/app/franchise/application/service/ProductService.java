@@ -4,9 +4,11 @@ import com.app.franchise.application.ports.input.IProductServicePort;
 import com.app.franchise.application.ports.output.IProductPersistencePort;
 import com.app.franchise.domain.exception.ProductAlreadyExistsException;
 import com.app.franchise.domain.exception.ProductNotFoundException;
+import com.app.franchise.domain.exception.StoreNotFoundException;
 import com.app.franchise.domain.model.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -46,8 +48,16 @@ public class ProductService implements IProductServicePort {
                 .flatMap(product -> persistencePort.updateProductName(productId, name));
     }
 
+    @Override
+    public Flux<Product> getProductsByStoreId(String storeId) {
+        return persistencePort.getProductsByStoreId(storeId)
+                .switchIfEmpty(Mono.defer(() -> Mono.error(ProductNotFoundException::new)));
+    }
+
     private Mono<Product> getMonoProductById(String productId) {
         return persistencePort.findProductById(productId)
                 .switchIfEmpty(Mono.defer(() -> Mono.error(ProductNotFoundException::new)));
     }
+
+
 }

@@ -1,10 +1,12 @@
-package com.app.franchise.infrastructure.adapters.input.rest;
+package com.app.franchise.infrastructure.adapters.input.rest.controller.product;
+
 
 import com.app.franchise.infrastructure.adapters.input.rest.dto.request.CreateProductDTO;
 import com.app.franchise.infrastructure.adapters.input.rest.dto.response.CreateProductResponseDTO;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RequestMapping(ProductAPI.BASE_PRODUCT_URL)
@@ -27,6 +29,9 @@ public interface ProductAPI {
 
     @GetMapping("/v1/api/health")
     Mono<String> health();
+
+    @GetMapping("/v1/api/{storeId}")
+    Flux<CreateProductResponseDTO> getProductsByStoreId(@PathVariable String storeId);
 
 
 

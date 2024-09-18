@@ -1,6 +1,7 @@
-package com.app.franchise.infrastructure.adapters.input.rest;
+package com.app.franchise.infrastructure.adapters.input.rest.controller.product;
 
 import com.app.franchise.application.ports.input.IProductServicePort;
+import com.app.franchise.domain.model.Product;
 import com.app.franchise.infrastructure.adapters.input.rest.dto.request.CreateProductDTO;
 import com.app.franchise.infrastructure.adapters.input.rest.dto.response.CreateProductResponseDTO;
 import com.app.franchise.infrastructure.adapters.input.rest.mapper.ProductRestMapper;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -43,5 +45,10 @@ public class ProductController implements ProductAPI{
     @Override
     public Mono<String> health() {
         return Mono.just("OK");
+    }
+
+    @Override
+    public Flux<CreateProductResponseDTO> getProductsByStoreId(String storeId) {
+        return servicePort.getProductsByStoreId(storeId).map(mapper::fromProductToCreateProductResponseDTO);
     }
 }

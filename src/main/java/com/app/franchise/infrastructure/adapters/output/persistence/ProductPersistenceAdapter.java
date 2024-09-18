@@ -6,6 +6,7 @@ import com.app.franchise.infrastructure.adapters.output.persistence.mapper.Produ
 import com.app.franchise.infrastructure.adapters.output.persistence.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -54,5 +55,10 @@ public class ProductPersistenceAdapter implements IProductPersistencePort {
                     return repository.save(mapper.fromProductToProductEntity(product));
                 })
                 .map(mapper::fromProductEntityToProduct);
+    }
+
+    @Override
+    public Flux<Product> getProductsByStoreId(String storeId) {
+        return repository.findByStoreId(storeId).map(mapper::fromProductEntityToProduct);
     }
 }

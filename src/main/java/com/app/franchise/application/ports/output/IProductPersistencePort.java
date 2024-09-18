@@ -1,6 +1,7 @@
 package com.app.franchise.application.ports.output;
 
 import com.app.franchise.domain.model.Product;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface IProductPersistencePort {
@@ -11,4 +12,5 @@ public interface IProductPersistencePort {
     Mono<Boolean> existsProductByName(String name);
     Mono<Product> updateProductStock(String productId, int stock);
     Mono<Product> updateProductName(String productId, String name);
+    Flux<Product> getProductsByStoreId(String storeId);
 }
