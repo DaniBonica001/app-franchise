@@ -6,9 +6,9 @@ import reactor.core.publisher.Mono;
 public interface IProductPersistencePort {
 
     Mono<Product> createProduct(Product product);
-    Mono<Void> deleteProduct(Integer productId);
-    Mono<Product> findProductById(Integer productId);
+    Mono<Void> deleteProduct(String productId);
+    Mono<Product> findProductById(String productId);
     Mono<Boolean> existsProductByName(String name);
-    Mono<Product> updateProductStock(Integer productId, int stock);
-    Mono<Product> updateProductName(Integer productId, String name);
+    Mono<Product> updateProductStock(String productId, int stock);
+    Mono<Product> updateProductName(String productId, String name);
 }

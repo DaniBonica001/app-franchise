@@ -13,7 +13,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Product {
 
-    private Integer productId;
+    private String productId;
     private String name;
     private int stock;
+    private String storeId;
 }

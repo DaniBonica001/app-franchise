@@ -17,14 +17,16 @@ public interface ProductAPI {
     Mono<CreateProductResponseDTO> createProduct(@Valid @RequestBody CreateProductDTO createProductDTO);
 
     @DeleteMapping("/v1/api/{productId}")
-    ResponseEntity<Mono<Void>> deleteProduct(@PathVariable Integer productId);
+    ResponseEntity<Mono<Void>> deleteProduct(@PathVariable String productId);
 
     @PatchMapping("/v1/api/{productId}/stock")
-    Mono<CreateProductResponseDTO> updateProductStock(@PathVariable Integer productId, @RequestBody CreateProductDTO createProductDTO);
+    Mono<CreateProductResponseDTO> updateProductStock(@PathVariable String productId, @RequestBody CreateProductDTO createProductDTO);
 
     @PatchMapping("/v1/api/{productId}/name")
-    Mono<CreateProductResponseDTO> updateProductName(@PathVariable Integer productId, @RequestBody CreateProductDTO createProductDTO);
+    Mono<CreateProductResponseDTO> updateProductName(@PathVariable String productId, @RequestBody CreateProductDTO createProductDTO);
 
+    @GetMapping("/v1/api/health")
+    Mono<String> health();
 
 
 

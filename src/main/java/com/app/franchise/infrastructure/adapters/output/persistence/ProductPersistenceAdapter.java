@@ -21,36 +21,37 @@ public class ProductPersistenceAdapter implements IProductPersistencePort {
     }
 
     @Override
-    public Mono<Void> deleteProduct(Integer productId) {
-        return repository.deleteById(productId);
+    public Mono<Void> deleteProduct(String productId) {
+        return repository.deleteByProductId(productId);
     }
 
     @Override
-    public Mono<Product> findProductById(Integer productId) {
-        return repository.findById(productId).map(mapper::fromProductEntityToProduct);
+    public Mono<Product> findProductById(String productId) {
+        return repository.findByProductId(productId).map(mapper::fromProductEntityToProduct);
     }
 
     @Override
     public Mono<Boolean> existsProductByName(String name) {
-        return repository.existsProductByName(name);
+        return repository.existsByName(name);
     }
 
     @Override
-    public Mono<Product> updateProductStock(Integer productId, int stock) {
-        return repository.findById(productId)
-                .flatMap(productEntity -> {
-                    productEntity.setStock(stock);
-                    return repository.save(productEntity);
+    public Mono<Product> updateProductStock(String productId, int stock) {
+
+        return findProductById(productId)
+                .flatMap(product -> {
+                    product.setStock(stock);
+                    return repository.save(mapper.fromProductToProductEntity(product));
                 })
                 .map(mapper::fromProductEntityToProduct);
     }
 
     @Override
-    public Mono<Product> updateProductName(Integer productId, String name) {
-        return repository.findById(productId)
-                .flatMap(productEntity -> {
-                    productEntity.setName(name);
-                    return repository.save(productEntity);
+    public Mono<Product> updateProductName(String productId, String name) {
+        return findProductById(productId)
+                .flatMap(product -> {
+                    product.setName(name);
+                    return repository.save(mapper.fromProductToProductEntity(product));
                 })
                 .map(mapper::fromProductEntityToProduct);
     }

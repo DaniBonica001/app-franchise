@@ -15,7 +15,10 @@ public record CreateProductDTO(
 
         @NotNull
         @Min(value=0, message = "Stock must be greater than or equal to 0")
-        int stock
+        int stock,
+
+        @NotBlank(message = "StoreId is required")
+        String storeId
 
 ) {
 }

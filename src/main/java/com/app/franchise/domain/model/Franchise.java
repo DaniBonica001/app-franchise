@@ -18,7 +18,7 @@ import java.util.List;
 @Document(collection = "franchises")
 public class Franchise {
 
-    private Integer franchise_id;
+    private String franchiseId;
     private String name;
     @ReadOnlyProperty
     @DocumentReference(lookup="{'franchises':?#{#self._id} }")

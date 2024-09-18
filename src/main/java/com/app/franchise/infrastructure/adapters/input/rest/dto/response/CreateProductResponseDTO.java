@@ -4,8 +4,9 @@ import lombok.Builder;
 
 @Builder
 public record CreateProductResponseDTO(
-        Integer productId,
+        String productId,
         String name,
-        int stock
+        int stock,
+        String storeId
 ) {
 }

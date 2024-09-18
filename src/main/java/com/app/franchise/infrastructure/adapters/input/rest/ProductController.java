@@ -24,19 +24,24 @@ public class ProductController implements ProductAPI{
     }
 
     @Override
-    public ResponseEntity<Mono<Void>> deleteProduct(Integer productId) {
+    public ResponseEntity<Mono<Void>> deleteProduct(String productId) {
         return new ResponseEntity<>(servicePort.deleteProduct(productId), HttpStatus.OK);
     }
 
     @Override
-    public Mono<CreateProductResponseDTO> updateProductStock(Integer productId, CreateProductDTO createProductDTO) {
+    public Mono<CreateProductResponseDTO> updateProductStock(String productId, CreateProductDTO createProductDTO) {
         return servicePort.updateProductStock(productId, createProductDTO.stock())
                 .map(mapper::fromProductToCreateProductResponseDTO);
     }
 
     @Override
-    public Mono<CreateProductResponseDTO> updateProductName(Integer productId, CreateProductDTO createProductDTO) {
+    public Mono<CreateProductResponseDTO> updateProductName(String productId, CreateProductDTO createProductDTO) {
         return servicePort.updateProductName(productId, createProductDTO.name())
                 .map(mapper::fromProductToCreateProductResponseDTO);
+    }
+
+    @Override
+    public Mono<String> health() {
+        return Mono.just("OK");
     }
 }

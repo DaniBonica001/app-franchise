@@ -18,10 +18,11 @@ import java.util.List;
 @Document(collection = "stores")
 public class Store {
 
-    private Integer store_id;
+    private String storeId;
     private String name;
 
     @ReadOnlyProperty
     @DocumentReference(lookup="{'stores':?#{#self._id} }")
     private List<Product> products;
+    private String franchiseId;
 }
